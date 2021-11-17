@@ -22,7 +22,7 @@
 
 | Column             | Type       | Options                        |
 | ------------------ | ---------- | ------------------------------ |
-| image              | image      | null: false                    |
+| image              | integer    | null: false                    |
 | price              | integer    | null: false                    |
 | name               | string     | null: false                    |
 | description        | text       | null: false                    |
@@ -30,29 +30,28 @@
 | status_id          | integer    | null: false                    |
 | ship_fee_id        | integer    | null: false                    |
 | ship_area_id       | integer    | null: false                    |
-| ship_days-id       | integer    | null: false                    |
-| user_id            | references | null: false, foreign_key: true |
+| ship_days_id       | integer    | null: false                    |
+| user               | references | null: false, foreign_key: true |
 
 
 ### Association
 
-- belongs_to :users
-- has_one    :orders
+- belongs_to :user
+- has_one    :order
 
 ## orders テーブル
 
 | Column             | Type       | Options                        |
 | ------------------ | ---------- | ------------------------------ |
-| price              | integer    | null: false                    |
-| user_id            | references | null: false, foreign_key: true |
-| item_id            | references | null: false, foreign_key: true |
+| user               | references | null: false, foreign_key: true |
+| item               | references | null: false, foreign_key: true |
 
 
 ### Association
 
-- belongs_to :users
-- belongs_to :items
-- has_one    :addresses
+- belongs_to :user
+- belongs_to :item
+- has_one    :address
 
 ## addresses テーブル
 
@@ -64,8 +63,8 @@
 | street_name        | string     | null: false                    |
 | bldg_name          | string     |                                |
 | phone_number       | string     | null: false                    |
-| order_id           | references | null: false, foreign_key: true |
+| order              | references | null: false, foreign_key: true |
 
 ### Association
 
-- belongs_to :orders
+- belongs_to :order
