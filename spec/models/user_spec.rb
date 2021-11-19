@@ -112,14 +112,12 @@ RSpec.describe User, type: :model do
       end
 
       it 'family_name_kanaが全角カタカナでないと保存できないこと' do
-        # @user.family_name_kana = 'やまだ'
         @user.family_name_kana = 'あいうえお'
         @user.valid?
         expect(@user.errors.full_messages).to include('Family name kana should be full-width katakana')
       end
 
       it 'first_name_kanaが全角カタカナでないと保存できないこと' do
-        # @user.first_name_kana = 'りくたろう'
         @user.first_name_kana = 'あいうえお'
         @user.valid?
         expect(@user.errors.full_messages).to include('First name kana should be full-width katakana')
