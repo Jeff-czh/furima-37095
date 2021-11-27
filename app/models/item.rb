@@ -1,2 +1,37 @@
 class Item < ApplicationRecord
+  extend ActiveHash::Associations::ActiveRecordExtensions
+  belongs_to :category
+  belongs_to :status
+  belongs_to :ship_fee
+  belongs_to :ship_area
+  belongs_to :ship_days
+
+  belongs_to :user
+  has_one :order
+  has_one_attached :image
+
+  with_options presence: true do
+    validates :image
+    validates :name
+    validates :description
+    validates :category_id
+    validates :status_id
+    validates :ship_fee_id
+    validates :ship_area_id
+    validates :ship_days_id
+    validates :user_id
+    validates :price
+  end
+  
+  with_options numericality: { other_than: 1 } do
+  validates :category_id
+  validates :status_id
+  validates :ship_fee_id 
+  validates :ship_area_id
+  validates :ship_days_id
+  end 
+  
+  validates :price, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999, message: "Out of setting range"}
+  validates :price, numericality: { only_integer: true, message: "Half-width number." }
+
 end
