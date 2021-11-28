@@ -34,13 +34,12 @@ RSpec.describe Item, type: :model do
         expect(@item).to be_valid
       end
     end
-    
 
     context '出品ができないとき' do
       it 'ユーザー登録している人でないと出品できない' do
         @item.user = nil
         @item.valid?
-        expect(@item.errors.full_messages).to include("User must exist", "User can't be blank")
+        expect(@item.errors.full_messages).to include('User must exist', "User can't be blank")
       end
       # it 'ユーザー登録している人でないと出品できない' do
       #   @item.user = nil
@@ -130,6 +129,4 @@ RSpec.describe Item, type: :model do
       end
     end
   end
-end    
-
-
+end
