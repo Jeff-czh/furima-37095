@@ -17,6 +17,7 @@ class ItemsController < ApplicationController
       render :new
     end
   end
+  
 
   private
 
