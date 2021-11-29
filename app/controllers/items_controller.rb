@@ -22,7 +22,7 @@ class ItemsController < ApplicationController
   def show
   end
 
-  def edit 
+  def edit
     if @item.user_id == current_user.id
     else
       redirect_to root_path
@@ -37,7 +37,7 @@ class ItemsController < ApplicationController
       render 'edit'
     end
   end
-  
+
   private
 
   def item_params
@@ -48,5 +48,4 @@ class ItemsController < ApplicationController
   def set_item
     @item = Item.find(params[:id])
   end
-
 end
