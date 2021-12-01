@@ -8,7 +8,7 @@ class OrderAddress
     validates :item_id
     # addressモデルのバリデーション
     validates :post_code, format: { with: /\A[0-9]{3}-[0-9]{4}\z/, message: 'is invalid. Include hyphen(-)' }
-    validates :prefecture_id, numericality: { other_than: 0, message: "can't be blank" }
+    validates :ship_area_id, numericality: { other_than: 0, message: "can't be blank" }
     validates :city
     validates :street_name
     validates :phone_number, format: { with: /\A[0-9]{11}\z/, message: 'is invalid' }
