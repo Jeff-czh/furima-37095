@@ -66,7 +66,7 @@ RSpec.describe OrderAddress, type: :model do
         expect(@order_address.errors.full_messages).to include("Post code is invalid")
       end
       it '郵便番号が全角数字があると保存できないこと' do
-        @order_address.post_code = '１_２３４_５６７'
+        @order_address.post_code = '１２３４５６７'
         @order_address.valid?
         expect(@order_address.errors.full_messages).to include("Post code is invalid")
       end
