@@ -58,12 +58,17 @@ RSpec.describe OrderAddress, type: :model do
       it '郵便番号が空だと保存できないこと' do
         @order_address.post_code = nil
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include("Post code can't be blank", 'Post code is invalid. Include hyphen(-)')
+        expect(@order_address.errors.full_messages).to include("Post code can't be blank", 'Post code is invalid')
       end
       it '郵便番号にハイフンがないと保存できないこと' do
         @order_address.post_code = 1_234_567
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include('Post code is invalid. Include hyphen(-)')
+        expect(@order_address.errors.full_messages).to include("Post code is invalid")
+      end
+      it '郵便番号が全角数字があると保存できないこと' do
+        @order_address.post_code = '１_２３４_５６７'
+        @order_address.valid?
+        expect(@order_address.errors.full_messages).to include("Post code is invalid")
       end
       it '都道府県が「---」だと保存できないこと' do
         @order_address.prefecture_id = 0
