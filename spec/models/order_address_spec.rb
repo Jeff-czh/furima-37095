@@ -63,12 +63,12 @@ RSpec.describe OrderAddress, type: :model do
       it '郵便番号にハイフンがないと保存できないこと' do
         @order_address.post_code = 1_234_567
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include("Post code is invalid")
+        expect(@order_address.errors.full_messages).to include('Post code is invalid')
       end
       it '郵便番号が全角数字があると保存できないこと' do
         @order_address.post_code = '１２３４５６７'
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include("Post code is invalid")
+        expect(@order_address.errors.full_messages).to include('Post code is invalid')
       end
       it '都道府県が「---」だと保存できないこと' do
         @order_address.prefecture_id = 0
