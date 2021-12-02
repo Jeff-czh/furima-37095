@@ -1,5 +1,7 @@
 window.addEventListener('load', () => {
   const priceInput = document.getElementById("item-price");
+  // priceInputがnullの場合にそれ以降のコードを読まないように実装できる
+  if (!priceInput){ return false;}
   priceInput.addEventListener("input", () => {
   const inputValue = priceInput.value;
   const addTaxDom = document.getElementById("add-tax-price");
